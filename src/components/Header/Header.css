@@ -1,0 +1,19 @@
+header{
+    background-color: #fcf4dd !important;
+}
+nav-side{
+    background-color: #fcf4dd !important;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.nav-link {
+    margin-right: 22px;
+    font-weight: 700 !important;
+    font-size: 19px !important;
+    color: #d81a5a !important;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}

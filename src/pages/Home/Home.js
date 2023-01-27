@@ -13,6 +13,7 @@ import Button from 'react-bootstrap/Button';
 
 /* Files locals */
 import {  } from "./Home.css";
+import ProductList from '../Products/ProductList'
 
 /* Images */
 import Tshirts from "../../assets/images/t-shirts-img.jpg"
@@ -25,6 +26,27 @@ import ImageBlog from "../../assets/images/blog-img.jpg"
 
 
 export const Home = () => {
+
+  const PRODUCTS = ProductList.Menudeo
+
+  const allProduct = []
+  for (let index = 0; index < 6; index++) {
+    const element = PRODUCTS[index];
+    allProduct.push(element)
+  }
+
+  const highlights = [];
+  for (let index = 0; index < 2; index++) {
+    const element = PRODUCTS[index];
+    highlights.push(element)
+  }
+
+  const bestSellers = [];
+  for (let index = 0; index < 3; index++) {
+    const element = PRODUCTS[index];
+    bestSellers.push(element)
+  }
+
   return (
     <>
     {/* Start carrousel */}
@@ -175,162 +197,107 @@ export const Home = () => {
       <Tab eventKey="all" title="Todos">
       <Container>
           <Row className="g-4">
-              <Col>
-                <Card className='mb-3'>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button className='col-12' variant="success">Comprar</Button>
-        </Card.Body>
-                </Card>
-              </Col>
-              <Col>
-                <Card className='mb-3' >
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button className='col-12' variant="success">Comprar</Button>
-        </Card.Body>
-                </Card>
-              </Col>
-              <Col className='mb-3'>
-                <Card >
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button className='col-12' variant="success">Comprar</Button>
-        </Card.Body>
-                </Card>
-              </Col>
+            {
+              allProduct.map((item, index) => {
+                return(
+                  <Col   md={4} className='mb-4'>
+                    <div key={index} > 
+                      <Card className='mb-3'>
+                        <Card.Img variant="top" src="holder.js/100px180" />
+                        <Card.Body>
+                          <Card.Title style={{color: '#d81a5a'}}> {item.name} </Card.Title>
+                          <Card.Title style={{color: 'black', fontSize:'15px'}} > {item.category} </Card.Title>
+                          <Card.Text>
+                            {item.description}
+                          </Card.Text>
+                          <Row>
+                              <Col md={6}>
+                                </Col>
+                                  <span style={{fontWeight: 'bold', color: 'black'}} >Presentación: {item.presentation}</span>
+                                <Col style={{color: '#d81a5a'}} md={6}>
+                                    {item.price} MXN
+                                  </Col>
+                                  </Row>
+                          <Button className='col-12' variant="success">Comprar</Button>
+                        </Card.Body>
+                      </Card>
+                    </div>
+                  </Col>
+                  
+                )
+              })
+            }
           </Row>
-          <Row className="g-4">
-              <Col>
-                <Card className='mb-3'>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button className='col-12' variant="success">Comprar</Button>
-        </Card.Body>
-                </Card>
-              </Col>
-              <Col>
-                <Card >
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button className='col-12' variant="success">Comprar</Button>
-        </Card.Body>
-                </Card>
-              </Col>
-              <Col>
-                <Card >
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button className='col-12' variant="success">Comprar</Button>
-        </Card.Body>
-                </Card>
-              </Col>
-          </Row>
+          
         </Container>
       </Tab>
       <Tab eventKey="highlights" title="Más detcados">
-      <Row className="g-4">
-              <Col>
-                <Card className='mb-3'>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button className='col-12' variant="success">Comprar</Button>
-        </Card.Body>
-                </Card>
-              </Col>
-              <Col>
-                <Card >
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button className='col-12' variant="success">Comprar</Button>
-        </Card.Body>
-                </Card>
-              </Col>
-              
-          </Row>
+        <Row className="g-4">
+            {
+              highlights.map((item, index) => {
+                return(
+                  <Col   md={4} className='mb-4'>
+                    <div key={index} > 
+                      <Card className='mb-3'>
+                        <Card.Img variant="top" src="holder.js/100px180" />
+                        <Card.Body>
+                          <Card.Title style={{color: '#d81a5a'}}> {item.name} </Card.Title>
+                          <Card.Title style={{color: 'black', fontSize:'15px'}} > {item.category} </Card.Title>
+                          <Card.Text>
+                            {item.description}
+                          </Card.Text>
+                          <Row>
+                              <Col md={6}>
+                                </Col>
+                                  <span style={{fontWeight: 'bold', color: 'black'}} >Presentación: {item.presentation}</span>
+                                <Col style={{color: '#d81a5a'}} md={6}>
+                                    {item.price} MXN
+                                  </Col>
+                                  </Row>
+                          <Button className='col-12' variant="success">Comprar</Button>
+                        </Card.Body>
+                      </Card>
+                    </div>
+                  </Col>
+                  
+                )
+              })
+            }
+        </Row>
       </Tab>
       <Tab eventKey="bestsellers" title="Más vendios">
-      <Row className="g-4">
-              <Col>
-                <Card className='mb-3'>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button className='col-12' variant="success">Comprar</Button>
-        </Card.Body>
-                </Card>
-              </Col>
-              <Col>
-                <Card >
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button className='col-12' variant="success">Comprar</Button>
-        </Card.Body>
-                </Card>
-              </Col>
-              <Col>
-                <Card >
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button className='col-12' variant="success">Comprar</Button>
-        </Card.Body>
-                </Card>
-              </Col>
-          </Row>
+        <Row className="g-4">
+            {
+              bestSellers.map((item, index) => {
+                return(
+                  <Col   md={4} className='mb-4'>
+                    <div key={index} > 
+                      <Card className='mb-3'>
+                        <Card.Img variant="top" src="holder.js/100px180" />
+                        <Card.Body>
+                          <Card.Title style={{color: '#d81a5a'}}> {item.name} </Card.Title>
+                          <Card.Title style={{color: 'black', fontSize:'15px'}} > {item.category} </Card.Title>
+                          <Card.Text>
+                            {item.description}
+                          </Card.Text>
+                          <Row>
+                              <Col md={6}>
+                                </Col>
+                                  <span style={{fontWeight: 'bold', color: 'black'}} >Presentación: {item.presentation}</span>
+                                <Col style={{color: '#d81a5a'}} md={6}>
+                                    {item.price} MXN
+                                  </Col>
+                                  </Row>
+                          <Button className='col-12' variant="success">Comprar</Button>
+                        </Card.Body>
+                      </Card>
+                    </div>
+                  </Col>
+                  
+                )
+              })
+            }
+        </Row>
       </Tab>
     </Tabs>
         </div>
@@ -342,7 +309,7 @@ export const Home = () => {
       <div className='latest-blog'>
         <Container>
           <Row className="g-4">
-              <Col>
+              <Col md={4}>
                 <Card>
                   <Card.Img variant="top" src={ImageBlog} />
                   <Card.Body>
@@ -355,7 +322,7 @@ export const Home = () => {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col>
+              <Col md={4}>
                 <Card>
                   <Card.Img variant="top" src={ImageBlog} />
                   <Card.Body>
@@ -368,7 +335,7 @@ export const Home = () => {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col>
+              <Col md={4}>
                 <Card>
                   <Card.Img variant="top" src={ImageBlog} />
                   <Card.Body>
